@@ -1,0 +1,30 @@
+#cloud-config
+
+users:
+  - name: root
+    lock_passwd: true
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-ed25519 ...
+
+ssh_pwauth: false
+
+packages:
+  - sudo
+  - openssh-server
+  - qemu-guest-agent
+  - curl
+  - vim
+
+write_files:
+  - path: /etc/ssh/sshd_config.d/60-vagrant-root.conf
+    owner: root:root
+    permissions: "0644"
+    content: |
+        PermitRootLogin prohibit-password
+        PasswordAuthentication no
+
+runcmd:
+  - systemctl enable --now ssh
+  - systemctl restart ssh
+  - systemctl enable --now qemu-guest-agent

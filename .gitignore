@@ -1,0 +1,5 @@
+.vagrant/
+
+*.qcow2
+*.box
+config/user-data.yml

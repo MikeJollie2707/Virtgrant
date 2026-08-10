@@ -1,0 +1,25 @@
+#cloud-config
+
+users:
+  - name: debian
+    gecos: Debian
+    groups:
+      - sudo
+    shell: /bin/bash
+    sudo:
+      - ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      - ssh-ed25519 ...
+
+packages:
+  - sudo
+  - openssh-server
+  - qemu-guest-agent
+  - curl
+  - vim
+
+ssh_pwauth: false
+
+runcmd:
+  - systemctl enable --now ssh
+  - systemctl enable --now qemu-guest-agent
