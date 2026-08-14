@@ -246,7 +246,7 @@ virt-install \
     --network "network=$NETWORK,model=virtio" \
     --os-variant debian13 \
     --graphics none \
-    --console pty,target_type=serial \
+    --video virtio \
     --cloud-init "user-data=$USER_DATA,meta-data=$META_DATA,network-config=$NETWORK_CONFIG" \
     --noautoconsole \
     --noreboot
