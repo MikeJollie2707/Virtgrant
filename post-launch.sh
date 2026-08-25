@@ -45,6 +45,6 @@ ssh \
     -o StrictHostKeyChecking=no \
     -o UserKnownHostsFile=/dev/null \
     -o IdentitiesOnly=yes \
-    -i "~/.ssh/id_ed25519_nopass" \
+    -i "~/.ssh/id_ed25519" \
     -- "$SSH_CONNECTION" \
     'cloud-init status --wait && sudo cloud-init clean --logs --machine-id && sudo poweroff'

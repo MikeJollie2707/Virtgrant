@@ -17,7 +17,7 @@ end
 
 Vagrant.configure("2") do |config|
   config.ssh.username = "root"
-  config.ssh.private_key_path = File.expand_path("~/.ssh/id_ed25519_nopass")
+  config.ssh.private_key_path = File.expand_path("~/.ssh/id_ed25519")
   config.ssh.insert_key = false
 
   config.vm.synced_folder ".", "/vagrant", disabled: true

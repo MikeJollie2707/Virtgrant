@@ -19,6 +19,7 @@ You want to create several test VMs and you're using `libvirt`.
 ```bash
 ./launch.sh --src-img path/to/image1 --dest-img path/to/image2 --disk-size SIZE
 ./build.sh path/to/image2 local/debian13
+vagrant up
 ```
 
 `SIZE` can be `20G` for example. See `qemu-img resize` for acceptable strings.
@@ -43,7 +44,7 @@ Flags:
 
 - `--src-img` (required): A path to where the cloud image is.
 - `--dest-img` (required): Where the disk should be written. You should write to the current directory.
-- `--disk-size` (required): How much space the resulting disk should occupy. This is equivalent to `qemu-img resize`.
+- `--disk-size` (required): How much space the resulting disk should occupy. Should match `config/metadata.json`. This is equivalent to `qemu-img resize`.
 - `--memory` (optional): How much memory in MB. Default to `2048`.
 - `--vcpu` (optional): How much vCPU for the VM. Default to `2`.
 - `--network` (optional): Which network to attach to. Default to `default`. It's best not to touch this flag.
@@ -69,7 +70,7 @@ Parameters:
 
 `Vagrantfile` defines how many VMs and how they should be brought up. Once that is defined, use `vagrant up` to bring them up, `vagrant halt` to shut them down, and `vagrant destroy` to remove those VMs.
 
-*It is worth noting that it will take a minute or two for VMs to get their IP addresses. If it hangs for more than two minutes, something is wrong with the networking.*
+*It is worth noting that it will take a few seconds for VMs to get their IP addresses. If it hangs for more than two minutes, something is wrong with the networking.*
 
 ### Misc scripts
 
