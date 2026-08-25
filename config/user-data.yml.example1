@@ -1,5 +1,10 @@
 #cloud-config
 
+swap:
+  filename: /swapfile
+  size: 4G
+  maxsize: 4G
+
 users:
   - name: root
     lock_passwd: true
